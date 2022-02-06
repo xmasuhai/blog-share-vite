@@ -1,8 +1,8 @@
-<script setup lang="ts" name="Login">
+<script setup lang="ts" name="BlogIndex">
 </script>
 
 <template>
-  Login 登录页面
+博客首页
 </template>
 
 <style lang="scss" scoped>

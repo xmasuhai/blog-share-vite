@@ -1,8 +1,8 @@
-<script setup lang="ts" name="Login">
+<script setup lang="ts" name="Register">
 </script>
 
 <template>
-  Login 登录页面
+  Register
 </template>
 
 <style lang="scss" scoped>

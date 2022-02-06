@@ -1434,6 +1434,18 @@ typescript@^4.5.5:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.5.5.tgz#d8c953832d28924a9e3d37c73d729c846c5896f3"
   integrity sha512-TCTIul70LyWe6IJWT8QSYeA54WQe8EjQFU4wY52Fasj5UKx88LNYKCgBEHcOMOrFF1rKGbD8v/xcNWVUq9SymA==
 
+unplugin-auto-import@^0.5.11:
+  version "0.5.11"
+  resolved "https://registry.yarnpkg.com/unplugin-auto-import/-/unplugin-auto-import-0.5.11.tgz#334768c734456bd802344547b839d7164ed8bd42"
+  integrity sha512-MJ3POLe/IysRHF4yd32FkKDoxqSRoiuIHm89ys67B8FLuz2Pvh9poeqTVe6IhJsNxwv0+GSdFfj5Dpq24lhm4g==
+  dependencies:
+    "@antfu/utils" "^0.4.0"
+    "@rollup/pluginutils" "^4.1.2"
+    local-pkg "^0.4.1"
+    magic-string "^0.25.7"
+    resolve "^1.21.0"
+    unplugin "^0.3.0"
+
 unplugin-vue-components@^0.17.16:
   version "0.17.16"
   resolved "https://registry.yarnpkg.com/unplugin-vue-components/-/unplugin-vue-components-0.17.16.tgz#219500210a786be9d14414cadf53d9160541cd6d"
@@ -1461,6 +1473,14 @@ upath@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/upath/-/upath-2.0.1.tgz#50c73dea68d6f6b990f51d279ce6081665d61a8b"
   integrity sha512-1uEe95xksV1O0CYKXo8vQvN1JEbtJp7lb7C5U9HMsIp6IVwntkH/oNUzyVNQSd4S1sYk2FpSSW44FqMc8qee5w==
+
+vite-plugin-vue-setup-extend@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/vite-plugin-vue-setup-extend/-/vite-plugin-vue-setup-extend-0.4.0.tgz#ebbbe265320039b8c6a3b9fcae3b8d152ecf4a13"
+  integrity sha512-WMbjPCui75fboFoUTHhdbXzu4Y/bJMv5N9QT9a7do3wNMNHHqrk+Tn2jrSJU0LS5fGl/EG+FEDBYVUeWIkDqXQ==
+  dependencies:
+    "@vue/compiler-sfc" "^3.2.29"
+    magic-string "^0.25.7"
 
 vite@^2.7.13:
   version "2.7.13"

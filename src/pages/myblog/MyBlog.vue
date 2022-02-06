@@ -1,8 +1,8 @@
-<script setup lang="ts" name="Login">
+<script setup lang="ts" name="MyBlog">
 </script>
 
 <template>
-  Login 登录页面
+  MyBlog
 </template>
 
 <style lang="scss" scoped>

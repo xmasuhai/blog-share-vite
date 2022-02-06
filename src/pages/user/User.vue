@@ -1,8 +1,8 @@
-<script setup lang="ts" name="Login">
+<script setup lang="ts" name="User">
 </script>
 
 <template>
-  Login 登录页面
+  User
 </template>
 
 <style lang="scss" scoped>

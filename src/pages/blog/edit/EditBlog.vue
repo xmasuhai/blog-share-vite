@@ -1,8 +1,8 @@
-<script setup lang="ts" name="Login">
+<script setup lang="ts" name="EditBlog">
 </script>
 
 <template>
-  Login 登录页面
+  EditBlog
 </template>
 
 <style lang="scss" scoped>
