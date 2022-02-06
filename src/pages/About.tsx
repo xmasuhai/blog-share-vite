@@ -1,13 +1,14 @@
 import {ref, defineComponent} from 'vue';
-import logo from '@/assets/logo.png';
+import {Button} from 'ant-design-vue';
+import 'ant-design-vue/dist/antd.css';
 
 const msg = ref(`'Hello Vue 3.0 + Vite!'`);
 
 export default defineComponent({
+  component: Button,
   render: () => (
     <>
-      <img alt="Vue logo"
-           src={logo}/>
+      <Button>123</Button>
       <h1>{msg}</h1>
     </>
   ),
