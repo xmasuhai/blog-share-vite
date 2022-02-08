@@ -4,6 +4,8 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    BlogFooter: typeof import('./BlogFooter.vue')['default']
+    BlogHeader: typeof import('./BlogHeader.vue')['default']
     HelloWorld: typeof import('./HelloWorld.vue')['default']
   }
 }
