@@ -7,6 +7,7 @@ declare module 'vue' {
     BlogFooter: typeof import('./BlogFooter.vue')['default']
     BlogHeader: typeof import('./BlogHeader.vue')['default']
     HelloWorld: typeof import('./HelloWorld.vue')['default']
+    Layout: typeof import('./Layout.vue')['default']
   }
 }
 
