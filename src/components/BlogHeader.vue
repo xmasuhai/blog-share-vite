@@ -1,21 +1,31 @@
 <script setup lang="ts" name="BlogHeader">
+import {ref} from 'vue';
 import {Button,} from 'ant-design-vue';
 
+const isLogin = ref(false);
 </script>
 
 <template>
-  <header class="blog-header">
+  <header :class="{
+    'blog-header': true,
+    login: isLogin
+  }">
     <h1>Let's share</h1>
     <p>精品博客汇聚</p>
-    <div class="btns">
-      <Button>立即登录</Button>
-      <Button>注册账号</Button>
+    <div v-if="isLogin" class="user">
+      <i>123</i>
+      <img src="" alt=""/>
+    </div>
+    <div v-else-if="!isLogin" class="btns">
+      <Button class="blog-btn">立即登录</Button>
+      <Button class="blog-btn">注册账号</Button>
     </div>
   </header>
 </template>
 
 <style lang="scss" scoped>
 @import 'src/assets/style/variables';
+@import 'src/assets/style/main';
 
 %h1-style {
   color: $white;
@@ -44,6 +54,7 @@ import {Button,} from 'ant-design-vue';
     margin-top: 20px;
 
     button {
+      @extend %blog-btn;
       margin: 20px 5px 0;
     }
   }

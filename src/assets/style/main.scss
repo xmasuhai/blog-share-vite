@@ -1,1 +1,19 @@
-$test-color: red;
+@import './variables';
+
+%blog-btn {
+  background: $white;
+  border: 0;
+  border-radius: 4px;
+  color: $theme-font-color;
+  font-size: 12px;
+  font-weight: normal;
+  height: 28px;
+  line-height: 28px;
+  padding: 0 8px;
+
+  &:hover {
+    background-color: $theme-lighter-color;
+    color: $white;
+  }
+}
+
