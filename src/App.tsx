@@ -7,6 +7,15 @@ import Layout from '@/components/Layout.vue';
 import {message} from 'ant-design-vue';
 import 'ant-design-vue/dist/antd.css';
 
+/*
+// temp
+import axios from 'axios';
+axios.post('/auth/register')
+  .then(res => {
+    console.log('res', res)
+  })
+*/
+
 // 用defineComponent定义组件且要导出
 export default defineComponent({
   name: 'App',

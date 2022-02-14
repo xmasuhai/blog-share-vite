@@ -16,15 +16,15 @@ const data = Mock.mock({
 
 export default [
   {
-    url: '/api/getUser',
-    method: 'get',
-    response: (/*req*/ ) => {
+    url: '/auth/register',
+    method: 'post',
+    response: (req: Record<string, unknown> ) => {
       const items = data.items;
       // console.log('body>>>>>>>>')
       return {
         code: 0, // 自定义 code
         message: 'ok',
-        data: ['aa', 'bb'], // 在axios中，用 result 代替 data
+        data: [req], // 在axios中，用 result 代替 data
         result: {
           total: items.length,
           list: items,
