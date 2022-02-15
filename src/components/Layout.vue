@@ -7,11 +7,11 @@ import BlogFooter from '@/components/BlogFooter.vue';
 
 <template>
   <div class="layout">
-    <BlogHeader></BlogHeader>
+    <BlogHeader/>
     <main class="blog-main">
       <router-view/>
     </main>
-    <BlogFooter></BlogFooter>
+    <BlogFooter/>
   </div>
 </template>
 

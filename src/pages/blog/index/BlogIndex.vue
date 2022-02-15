@@ -97,6 +97,7 @@ const popMessage = inject<typeof message>('$message');
         color: $theme-lighter-color;
         font-size: 12px;
         font-weight: normal;
+
       }
     }
 
