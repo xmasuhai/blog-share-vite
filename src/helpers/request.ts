@@ -1,4 +1,4 @@
-import axios, {AxiosRequestConfig, Method} from 'axios';
+import axios, {AxiosRequestConfig, AxiosResponse, Method} from 'axios';
 import {message} from 'ant-design-vue';
 
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
@@ -14,7 +14,7 @@ const storeToken = (tokenStr: string) => {
     : (localStorage.token = tokenStr);
 };
 
-export default function request(url: string, type: Method = 'GET', data = {}) {
+export default function request(url: string, type: Method = 'GET', data = {}): Promise<AxiosResponse> {
   return new Promise((resolve, reject) => {
     // 配置axios选项参数
     const option: AxiosRequestConfig = {

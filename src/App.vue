@@ -14,7 +14,7 @@ import 'ant-design-vue/es/message/style/index.css';
 // 将 message 方法挂载在全局
 provide('$message', message);
 
-/*pnpm dev
+/*
 // temp
 import axios from 'axios';
 axios.post('/auth/register')

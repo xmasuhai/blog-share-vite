@@ -1,5 +1,7 @@
-import {createStore, Store} from 'vuex';
+import authStore from '@/store/modules/authStore';
+import blogStore from '@/store/modules/blogStore';
 import {InjectionKey} from 'vue';
+import {createStore, Store, useStore as baseUseStore} from 'vuex';
 
 // 为 store state 声明类型
 export interface State {
@@ -11,6 +13,10 @@ export const key: InjectionKey<Store<State>> = Symbol();
 
 // 创建一个新的 store 实例
 export const store = createStore<State>({
+  modules: {
+    authStore,
+    blogStore,
+  },
   state() {
     return {
       count: 0
@@ -22,3 +28,8 @@ export const store = createStore<State>({
     }
   }
 });
+
+// 定义自己的 `useStore` 组合式函数
+export function useStore() {
+  return baseUseStore(key);
+}
