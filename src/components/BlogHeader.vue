@@ -25,7 +25,7 @@ const isLogin = ref(false);
 
 <style lang="scss" scoped>
 @import 'src/assets/style/variables';
-@import 'src/assets/style/main';
+@import '../assets/style/blog-article';
 
 %h1-style {
   color: $white;

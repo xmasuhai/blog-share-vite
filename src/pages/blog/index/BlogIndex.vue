@@ -1,11 +1,4 @@
 <script setup lang="ts" name="BlogIndex">
-/*
-
-import {Button, message} from 'ant-design-vue';
-import {inject} from 'vue';
-
-const popMessage = inject<typeof message>('$message');
-*/
 
 </script>
 
@@ -14,7 +7,9 @@ const popMessage = inject<typeof message>('$message');
 
     <div class="item">
       <figure class="avatar">
-        <img src="" alt="">
+        <img class="img"
+             src="https://cn.gravatar.com/avatar/1?s=128&d=identicon"
+             alt=""/>
         <figcaption>
           姓名
         </figcaption>
@@ -27,24 +22,12 @@ const popMessage = inject<typeof message>('$message');
         正文，最多显示前200字
       </p>
     </div>
+
     <div class="item">
       <figure class="avatar">
-        <img src="" alt="">
-        <figcaption>
-          姓名
-        </figcaption>
-      </figure>
-      <h3 class="title">
-        文章标题
-        <span class="date">日期</span>
-      </h3>
-      <p class="article">
-        正文，最多显示前200字
-      </p>
-    </div>
-    <div class="item">
-      <figure class="avatar">
-        <img src="" alt="">
+        <img class="img"
+             src="https://cn.gravatar.com/avatar/1?s=128&d=identicon"
+             alt=""/>
         <figcaption>
           姓名
         </figcaption>
