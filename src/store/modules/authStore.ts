@@ -2,9 +2,7 @@ import auth from '@/api/auth';
 import {Store} from 'vuex';
 import {responseData} from '@/types/responseData';
 
-// 用户名
-
-type authState = {
+export interface authState {
   user: string | null,
   isLogin: boolean
 }

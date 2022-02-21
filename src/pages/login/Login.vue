@@ -1,9 +1,9 @@
 <script setup lang="ts" name="Login">
-import {ref} from 'vue';
 import UserInput from '@/components/user-authentication/UserInput.vue';
 import UserSubmitBtnTip from '@/components/user-authentication/UserSubmitBtnTip.vue';
+import {ref} from 'vue';
+import {useRouter} from 'vue-router';
 import {mapActions} from 'vuex';
-import {useRouter/*, useRoute*/} from 'vue-router';
 
 const router = useRouter();
 
@@ -11,6 +11,17 @@ const username = ref('');
 const password = ref('');
 
 const {login} = mapActions(['login']);
+
+const getUser = computed(() => {
+  const {user} = mapGetters(['user']);
+  user()
+})
+
+const getIsLogin = computed(() => {
+  const {isLogin} = mapGetters(['isLogin']);
+  isLogin()
+})
+
 const onLogin = () => {
   login({username: username, password: password})
     .then(() => {
