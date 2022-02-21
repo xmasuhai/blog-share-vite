@@ -1,4 +1,5 @@
 <script setup lang="ts" name="UserInput">
+import {ref} from 'vue';
 import {Input} from 'ant-design-vue';
 
 interface Props {
@@ -7,7 +8,6 @@ interface Props {
   inputType?: string,
   placeholder?: string,
   errorText: string,
-  doubleBind: string
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -16,26 +16,34 @@ const props = withDefaults(defineProps<Props>(), {
   inputType: 'text',
   placeholder: '',
   errorText: '',
-  doubleBind: '',
-
 });
 
-const {title,/* isDisabled, */inputType, placeholder, errorText, doubleBind,} = toRefs(props);
+const {title,/* isDisabled, */inputType, placeholder, errorText,} = toRefs(props);
+
+const emit = defineEmits(['update:username', 'update:password']);
+
+const changeValue = (e: Event) => {
+  // console.log('value', e);
+  emit('update:username', e); // 以前是 `this.$emit('input', title)`
+  emit('update:password', e); // 以前是 `this.$emit('input', title)`
+};
 
 </script>
 
 <template>
-  <label :for="title">
-    <h4 :class="inputType">
-      {{ title }}
-    </h4>
-    <Input v-model="doubleBind"
-           :type="inputType"
-           :placeholder="placeholder ?? this.title"
-           :id="title"
-           class="user-input"/>
-  </label>
-  <p class="error">
-    {{ errorText }}
-  </p>
+  <div>
+    <label :for="title">
+      <h4 :class="inputType">
+        {{ title }}
+      </h4>
+      <Input :type="inputType"
+             :placeholder="placeholder ?? this.title"
+             :id="title"
+             @input="changeValue"
+             class="user-input"/>
+    </label>
+    <p class="error">
+      {{ errorText }}
+    </p>
+  </div>
 </template>

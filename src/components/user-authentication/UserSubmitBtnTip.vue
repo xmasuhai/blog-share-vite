@@ -21,14 +21,16 @@ const {btnName, tipText, linkTo, linkText,} = toRefs(props);
 </script>
 
 <template>
-  <Button :class="['register-btn', 'blog-btn']">
-    {{ btnName }}
-  </Button>
-  <p class="notice">
-    {{ tipText }}
-    <router-link :to="linkTo"
-                 class="to-login">
-      {{ linkText }}
-    </router-link>
-  </p>
+  <div>
+    <Button :class="['register-btn', 'blog-btn']">
+      {{ btnName }}
+    </Button>
+    <p class="notice">
+      {{ tipText }}
+      <router-link :to="linkTo"
+                   class="to-login">
+        {{ linkText }}
+      </router-link>
+    </p>
+  </div>
 </template>
