@@ -12,16 +12,6 @@ const password = ref('');
 
 const {login} = mapActions(['login']);
 
-const getUser = computed(() => {
-  const {user} = mapGetters(['user']);
-  user()
-})
-
-const getIsLogin = computed(() => {
-  const {isLogin} = mapGetters(['isLogin']);
-  isLogin()
-})
-
 const onLogin = () => {
   login({username: username, password: password})
     .then(() => {

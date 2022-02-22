@@ -1,6 +1,19 @@
 <script setup lang="ts" name="BlogHeader">
 import {ref} from 'vue';
 import {Button,} from 'ant-design-vue';
+import {useStore} from '@/store';
+
+const store = useStore();
+
+console.log('store', store);
+
+const getUser = store.getters.user;
+
+const getIsLogin = store.getters.isLogin;
+
+const checkLogin = store.dispatch('checkLogin');
+
+const logout = store.dispatch('logout');
 
 const isLogin = ref(false);
 </script>
@@ -14,7 +27,20 @@ const isLogin = ref(false);
     <p>精品博客汇聚</p>
     <div v-if="isLogin" class="user">
       <i>123</i>
-      <img src="" alt=""/>
+      <!--
+            <img class="avatar"
+                 :src="user.avatar"
+                 :alt="user.username"
+                 :title="user.username">
+            -->
+      <ul>
+        <li>
+          <router-link to="my">我的主页</router-link>
+        </li>
+        <li>
+          <a href="#" @click="logout">注销</a>
+        </li>
+      </ul>
     </div>
     <div v-else-if="!isLogin" class="btns">
       <Button class="blog-btn">立即登录</Button>
@@ -84,6 +110,38 @@ const isLogin = ref(false);
     height: 40px;
     margin-left: 15px;
     width: 40px;
+  }
+
+  .user {
+    position: relative;
+
+    ul {
+      display: none;
+      position: absolute;
+      right: 0;
+      list-style: none;
+      border: 1px solid #eaeaea;
+      margin: 0;
+      padding: 0;
+      background-color: #fff;
+
+      a {
+        text-decoration: none;
+        color: #333;
+        font-size: 12px;
+        display: block;
+        padding: 5px 10px;
+
+        &:hover {
+          background-color: #eaeaea;
+        }
+      }
+
+    }
+
+    &:hover ul {
+      display: block;
+    }
   }
 }
 

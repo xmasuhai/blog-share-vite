@@ -1,20 +1,8 @@
 import auth from '@/api/auth';
-import {/*Store,*/ Module, ActionContext} from 'vuex';
 import {responseData} from '@/types/responseData';
 import RootStateTypes from '@/store/interface';
-import AuthModulesTypes from '@/store/modules/auth/interface';
-
-// const TestModule: Module<TestModulesTypes, RootStateTypes>
-// 第一个泛型参数为当前子模块的state类型定义
-// 第二个参数为根级state的类型定义
-// 只要定义了state的类型，在所有使用state的地方均会自动推断，不需要在定义
-
-export interface authState {
-  user: string | null,
-  isLogin: boolean
-}
-
-type ActionContextType = ActionContext<AuthModulesTypes, RootStateTypes>;
+import {Module} from 'vuex';
+import AuthModuleTypes, {authState, ActionContextType} from '@/store/modules/auth/interface';
 
 const state = () => {
   return {
@@ -24,6 +12,7 @@ const state = () => {
 };
 
 const getters = {
+  // 计算属性监听变化
   user: (state: authState) => state.user,
   isLogin: (state: authState) => state.isLogin
 };
@@ -77,7 +66,7 @@ const actions = {
   */
 };
 
-const authModule: Module<AuthModulesTypes, RootStateTypes> = {
+const authModule: Module<AuthModuleTypes, RootStateTypes> = {
   state,
   getters,
   mutations,
