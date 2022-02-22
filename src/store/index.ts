@@ -1,15 +1,11 @@
-import authStore from '@/store/modules/authStore';
-import blogStore from '@/store/modules/blogStore';
 import {InjectionKey} from 'vue';
 import {createStore, Store, useStore as baseUseStore} from 'vuex';
+import authStore from '@/store/modules/auth/';
+import blogStore from '@/store/modules/blog/';
+import RootStateTypes from '@/store/interface';
 
-// 为 store state 声明类型
-
-export interface State {
-}
-
-// 定义 injection key
-export const key: InjectionKey<Store<State>> = Symbol();
+// 定义 injection key 在注册store时需要用到 app.use(store, key);
+export const key: InjectionKey<Store<RootStateTypes>> = Symbol('vue-store');
 
 /*
 
@@ -47,15 +43,27 @@ export default createStore<State>({
 */
 
 // 创建一个新的 store 实例
-export const store = createStore<State>({
+export const store = createStore<RootStateTypes>({
+  state: {},
+  getters: {},
+  mutations: {},
+  actions: {},
   modules: {
-// @ts-ignore
     authStore,
     blogStore,
   }
 });
 
 // 定义自己的 `useStore` 组合式函数
+/* vue组件setup中使用
+* import { useStore } from '@/store';
+* const store = useStore(key); // 可实现调用
+*
+* */
 export function useStore() {
-  return baseUseStore<State>(key);
+  return baseUseStore<RootStateTypes>(key);
+}
+
+export function useMyStore() {
+  return baseUseStore<RootStateTypes>(key);
 }
