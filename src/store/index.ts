@@ -60,10 +60,13 @@ export const store = createStore<RootStateTypes>({
 * const store = useStore(key); // 可实现调用
 *
 * */
+
 export function useStore() {
   return baseUseStore<RootStateTypes>(key);
 }
 
+/*
 export function useMyStore() {
   return baseUseStore<RootStateTypes>(key);
 }
+*/

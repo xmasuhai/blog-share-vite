@@ -1,5 +1,4 @@
 <script setup lang="ts" name="UserInput">
-import {ref} from 'vue';
 import {Input} from 'ant-design-vue';
 
 interface Props {
@@ -23,9 +22,8 @@ const {title,/* isDisabled, */inputType, placeholder, errorText,} = toRefs(props
 const emit = defineEmits(['update:username', 'update:password']);
 
 const changeValue = (e: Event) => {
-  // console.log('value', e);
+  emit('update:password', e);
   emit('update:username', e); // 以前是 `this.$emit('input', title)`
-  emit('update:password', e); // 以前是 `this.$emit('input', title)`
 };
 
 </script>

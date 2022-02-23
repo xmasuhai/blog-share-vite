@@ -3,17 +3,19 @@ import UserInput from '@/components/user-authentication/UserInput.vue';
 import UserSubmitBtnTip from '@/components/user-authentication/UserSubmitBtnTip.vue';
 import {ref} from 'vue';
 import {useRouter} from 'vue-router';
-import {mapActions} from 'vuex';
+import {useStore} from '@/store';
+import {logString} from '@/store/modules/auth/interface';
 
+const store = useStore();
 const router = useRouter();
 
 const username = ref('');
 const password = ref('');
 
-const {login} = mapActions(['login']);
+const asyncLogin = (logString: logString) => {return store.dispatch('login', logString);};
 
-const onLogin = () => {
-  login({username: username, password: password})
+const onLogin = (logString: logString) => {
+  asyncLogin(logString)
     .then(() => {
       router.push({path: '/'});
     });
@@ -31,7 +33,7 @@ const onLogin = () => {
                inputType="password"
                errorText="当前用户名或密码不匹配"
                v-model:password="password"
-               @keyup.enter="onLogin"/>
+               @keyup.enter="onLogin({username, password})"/>
 
     <UserSubmitBtnTip btnName="立即登录"
                       tipText="没有账号？"

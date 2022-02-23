@@ -13,6 +13,11 @@ export default interface AuthModuleTypes {
   isLogin: boolean
 }
 
+export type logString = {
+  username: string,
+  password: string
+}
+
 // const TestModule: Module<TestModulesTypes, RootStateTypes>
 // 第一个泛型参数为当前子模块的state类型定义
 // 第二个参数为根级state的类型定义

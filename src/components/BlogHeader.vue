@@ -1,38 +1,33 @@
 <script setup lang="ts" name="BlogHeader">
-import {ref} from 'vue';
 import {Button,} from 'ant-design-vue';
 import {useStore} from '@/store';
 
 const store = useStore();
 
-console.log('store', store);
-
 const getUser = store.getters.user;
-
 const getIsLogin = store.getters.isLogin;
 
-const checkLogin = store.dispatch('checkLogin');
+const checkLogin = () => {return store.dispatch('checkLogin');};
 
-const logout = store.dispatch('logout');
+const logout = () => {return store.dispatch('logout');};
 
-const isLogin = ref(false);
+checkLogin();
+
 </script>
 
 <template>
   <header :class="{
     'blog-header': true,
-    login: isLogin
+    login: getIsLogin
   }">
     <h1>Let's share</h1>
     <p>精品博客汇聚</p>
-    <div v-if="isLogin" class="user">
+    <div v-if="getIsLogin" class="user">
       <i>123</i>
-      <!--
-            <img class="avatar"
-                 :src="user.avatar"
-                 :alt="user.username"
-                 :title="user.username">
-            -->
+      <img class="avatar"
+           :src="getUser.avatar"
+           :alt="getUser.username"
+           :title="getUser.username">
       <ul>
         <li>
           <router-link to="my">我的主页</router-link>
@@ -42,7 +37,7 @@ const isLogin = ref(false);
         </li>
       </ul>
     </div>
-    <div v-else-if="!isLogin" class="btns">
+    <div v-else-if="!getIsLogin" class="btns">
       <Button class="blog-btn">立即登录</Button>
       <Button class="blog-btn">注册账号</Button>
     </div>
