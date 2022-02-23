@@ -3,7 +3,6 @@ import {Button,} from 'ant-design-vue';
 import {useStore} from '@/store';
 
 const store = useStore();
-
 const getUser = store.getters.user;
 const getIsLogin = store.getters.isLogin;
 
@@ -27,7 +26,7 @@ checkLogin();
       <img class="avatar"
            :src="getUser.avatar"
            :alt="getUser.username"
-           :title="getUser.username">
+           :title="getUser.username"/>
       <ul>
         <li>
           <router-link to="my">我的主页</router-link>
