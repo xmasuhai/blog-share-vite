@@ -3,8 +3,14 @@ import {Button,} from 'ant-design-vue';
 import {useStore} from '@/store';
 
 const store = useStore();
-const getUser = store.getters.user;
-const getIsLogin = store.getters.isLogin;
+
+const getUser = computed(() => {
+  return store.state.authStore.user;
+});
+
+const getIsLogin = computed(() => {
+  return store.state.authStore.isLogin;
+});
 
 const checkLogin = () => {return store.dispatch('checkLogin');};
 
@@ -17,10 +23,10 @@ checkLogin();
 <template>
   <header :class="{
     'blog-header': true,
-    login: getIsLogin
+    'login': getIsLogin
   }">
     <h1>Let's share</h1>
-    <p>精品博客汇聚</p>
+    <p v-if="!getIsLogin">精品博客汇聚</p>
     <div v-if="getIsLogin" class="user">
       <i>123</i>
       <img class="avatar"
@@ -29,16 +35,28 @@ checkLogin();
            :title="getUser.username"/>
       <ul>
         <li>
-          <router-link to="my">我的主页</router-link>
+          <router-link to="myBlog">我的主页</router-link>
         </li>
         <li>
           <a href="#" @click="logout">注销</a>
         </li>
       </ul>
     </div>
+
     <div v-else-if="!getIsLogin" class="btns">
-      <Button class="blog-btn">立即登录</Button>
-      <Button class="blog-btn">注册账号</Button>
+
+      <Button class="blog-btn">
+        <router-link to="/login">
+          立即登录
+        </router-link>
+      </Button>
+
+      <Button class="blog-btn">
+        <router-link to="/register">
+          注册账号
+        </router-link>
+      </Button>
+
     </div>
   </header>
 </template>
@@ -58,7 +76,7 @@ checkLogin();
   background: $bg-color-veg;
   display: grid;
   justify-items: center;
-  padding: 0 12% 30px;
+  padding: 0 12% 0;
 
   h1 {
     @extend %h1-style;
@@ -71,7 +89,10 @@ checkLogin();
   }
 
   .btns {
-    margin-top: 20px;
+    margin: {
+      top: 20px;
+      bottom: 30px;
+    }
 
     button {
       @extend %blog-btn;

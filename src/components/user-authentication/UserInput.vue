@@ -21,9 +21,9 @@ const {title,/* isDisabled, */inputType, placeholder, errorText,} = toRefs(props
 
 const emit = defineEmits(['update:username', 'update:password']);
 
-const changeValue = (e: Event) => {
-  emit('update:password', e);
-  emit('update:username', e); // 以前是 `this.$emit('input', title)`
+const changeValue = (e: InputEvent) => {
+  emit('update:password', (e.target as HTMLInputElement).value);
+  emit('update:username', (e.target as HTMLInputElement).value); // 以前是 `this.$emit('input', title)`
 };
 
 </script>

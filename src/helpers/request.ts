@@ -1,4 +1,4 @@
-import axios, {AxiosPromise, AxiosRequestConfig, Method} from 'axios';
+import axios, {AxiosRequestConfig, Method} from 'axios';
 import {message} from 'ant-design-vue';
 import {responseData} from '@/types/responseData';
 
@@ -15,7 +15,9 @@ const storeToken = (tokenStr: string) => {
     : (localStorage.token = tokenStr);
 };
 
-export default function request(url: string, type: Method = 'GET', data = {}): AxiosPromise<responseData> {
+export default function request(url: string,
+                                type: Method = 'GET',
+                                data = {}): Promise<responseData> {
   return new Promise((resolve, reject) => {
     // 配置axios选项参数
     const option: AxiosRequestConfig = {
@@ -28,26 +30,33 @@ export default function request(url: string, type: Method = 'GET', data = {}): A
       ? option.params = data // 查询参数方式 传递数据
       : option.data = data;
 
+    // 用户登出，删除 jwt parameters
+    if (url === '/auth/logout') {
+      window.localStorage
+        ? localStorage.removeItem('token')
+        : (localStorage.token = null);
+    }
+
     // 携带JWT，设置请求头字段 axios.defaults.headers.common['Authorization']
     if (localStorage.token) {
       axios.defaults.headers.common['Authorization'] = localStorage.token;
     }
 
     axios(option)
-      .then(res => {
+      .then(res => { // AxiosPromise<any>
         // console.log(res.data);
         // 接口文档约定 res.data.status: 'ok' 见 http://dw-z.ink/2j4pC
         if (res.data.status === 'ok') {
           res.data.token && storeToken(res.data.token);
-          resolve(res.data);
+          return resolve(res.data);
         } else {
           errorMsg(res.data.msg);
-          reject(res.data);
+          return reject(res.data);
         }
       })
       .catch(err => {
         errorMsg('网络异常');
-        reject({msg: '网络异常', errorDetail: err});
+        return reject({msg: '网络异常', errorDetail: err});
       });
   });
 }

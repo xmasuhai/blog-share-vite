@@ -10,7 +10,7 @@
         <img class="img"
              src="https://cn.gravatar.com/avatar/1?s=128&d=identicon"
              alt=""/>
-        <figcaption>
+        <figcaption class="info">
           姓名
         </figcaption>
       </figure>

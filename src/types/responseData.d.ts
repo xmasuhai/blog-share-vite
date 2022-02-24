@@ -3,7 +3,7 @@
 // import {AxiosResponse} from 'axios';
 
 export interface responseData {
-  status: string;
+  status: 'ok' | 'fail';
   msg: string;
   isLogin?: boolean;
   data: {
@@ -12,7 +12,8 @@ export interface responseData {
     avatar: string;
     createdAt: string;
     updatedAt: string;
-  }
+  },
+  token?: string;
 }
 
 export type userAuthInfo = {

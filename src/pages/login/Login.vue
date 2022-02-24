@@ -1,7 +1,7 @@
 <script setup lang="ts" name="Login">
 import UserInput from '@/components/user-authentication/UserInput.vue';
 import UserSubmitBtnTip from '@/components/user-authentication/UserSubmitBtnTip.vue';
-import {ref} from 'vue';
+import {ref,} from 'vue';
 import {useRouter} from 'vue-router';
 import {useStore} from '@/store';
 import {logString} from '@/store/modules/auth/interface';
@@ -12,13 +12,19 @@ const router = useRouter();
 const username = ref('');
 const password = ref('');
 
-const asyncLogin = (logString: logString) => {return store.dispatch('login', logString);};
+const asyncLogin = (logString: logString) => {
+  return store.dispatch('login', logString);
+};
 
 const onLogin = (logString: logString) => {
   asyncLogin(logString)
-    .then(() => {
+    .then((/*res*/) => {
+      /* res 不用再处理 已存入 store */
+      // 成功，跳转首页
       router.push({path: '/'});
-    });
+      // console.log('store.state.authStore.user', store.state.authStore.user);
+      // console.log('store.state.authStore.isLogin', store.state.authStore.isLogin);
+    }, /* 失败，不跳转 */);
 };
 
 </script>
@@ -39,7 +45,7 @@ const onLogin = (logString: logString) => {
                       tipText="没有账号？"
                       linkTo="/register"
                       linkText="注册新用户"
-                      @click="onLogin"/>
+                      @click="onLogin({username, password})"/>
   </section>
 </template>
 

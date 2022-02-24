@@ -1,5 +1,5 @@
 import auth from '@/api/auth';
-import {responseData} from '@/types/responseData';
+import {responseData, userAuthInfo} from '@/types/responseData';
 import RootStateTypes from '@/store/interface';
 import {Module} from 'vuex';
 import AuthModuleTypes, {authState, ActionContextType} from '@/store/modules/auth/interface';
@@ -28,19 +28,21 @@ const mutations = {
 };
 
 const actions = {
-  login({commit}: ActionContextType, {username, password}: Record<string, string>): Promise<void | authState> {
+  login({commit}: ActionContextType, {username, password}: userAuthInfo): Promise<responseData> {
     return auth.login({username, password})
       .then(res => {
-        commit('setUser', {user: res.data});
+        commit('setUser', {user: res.data.username});
         commit('setLogin', {isLogin: true});
+        // console.log('res.data', res.data);
+        // console.log('res', res);
+        return res;
       });
   },
-
-  async register({commit}: ActionContextType, {username, password}: Record<string, string>): Promise<responseData> {
+  async register({commit}: ActionContextType, {username, password}: userAuthInfo): Promise<responseData> {
     let res = await auth.register({username, password});
-    commit('setUser', {user: res.data});
+    commit('setUser', {user: res.data.username});
     commit('setLogin', {isLogin: true});
-    return res.data;
+    return res;
   },
 
   async logout({commit}: ActionContextType) {
@@ -52,8 +54,8 @@ const actions = {
   async checkLogin({commit, state}: ActionContextType): (Promise<Boolean>) {
     if (state.isLogin) return true;
     let res = await auth.getInfo();
-    commit('setLogin', {isLogin: res.data.isLogin});
-    if (!res.data.isLogin) return false;
+    commit('setLogin', {isLogin: res.isLogin});
+    if (!res.isLogin) return false;
     commit('setUser', {user: res.data});
     return true;
   }
