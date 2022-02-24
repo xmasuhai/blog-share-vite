@@ -5,11 +5,11 @@ import {useStore} from '@/store';
 const store = useStore();
 
 const getUser = computed(() => {
-  return store.state.authStore.user;
+  return store.getters.user;
 });
 
 const getIsLogin = computed(() => {
-  return store.state.authStore.isLogin;
+  return store.getters.isLogin;
 });
 
 const checkLogin = () => {return store.dispatch('checkLogin');};
@@ -25,8 +25,10 @@ checkLogin();
     'blog-header': true,
     'login': getIsLogin
   }">
-    <h1>Let's share</h1>
-    <p v-if="!getIsLogin">精品博客汇聚</p>
+    <h1>
+      Let's share
+    </h1>
+    <p v-show="!getIsLogin">精品博客汇聚</p>
     <div v-if="getIsLogin" class="user">
       <i>123</i>
       <img class="avatar"
@@ -43,7 +45,7 @@ checkLogin();
       </ul>
     </div>
 
-    <div v-else-if="!getIsLogin" class="btns">
+    <div v-if="!getIsLogin" class="btns">
 
       <Button class="blog-btn">
         <router-link to="/login">
