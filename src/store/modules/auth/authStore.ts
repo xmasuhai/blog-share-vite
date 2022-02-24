@@ -52,8 +52,11 @@ const actions = {
   },
 
   async checkLogin({commit, state}: ActionContextType): (Promise<Boolean>) {
+    // 已处于登录状态，直接返回 true
     if (state.isLogin) return true;
-    let res = await auth.getInfo();
+    // 服务器 验证用户是否处于登录状态
+    const res = await auth.getInfo();
+    // 将返回结果的 isLogin 设置到 本地状态
     commit('setLogin', {isLogin: res.isLogin});
     if (!res.isLogin) return false;
     commit('setUser', {user: res.data});

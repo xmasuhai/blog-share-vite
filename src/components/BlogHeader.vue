@@ -12,9 +12,13 @@ const getIsLogin = computed(() => {
   return store.getters.isLogin;
 });
 
-const checkLogin = () => {return store.dispatch('checkLogin');};
+const checkLogin = () => {
+  return store.dispatch('checkLogin');
+};
 
-const logout = () => {return store.dispatch('logout');};
+const logout = () => {
+  return store.dispatch('logout');
+};
 
 checkLogin();
 
