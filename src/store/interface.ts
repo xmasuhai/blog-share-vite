@@ -2,7 +2,6 @@
 // 比如我们在state上定义属性 test 的类型, 然后默认导出该类型定义
 
 export default interface RootStateTypes {
-    authStore: any;
-    blogStore: any;
+    authStore: unknown;
+    blogStore: unknown;
 }
-

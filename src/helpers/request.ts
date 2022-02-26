@@ -15,9 +15,7 @@ const storeToken = (tokenStr: string) => {
     : (localStorage.token = tokenStr);
 };
 
-export default function request(url: string,
-                                type: Method = 'GET',
-                                data = {}): Promise<responseData> {
+export default function request(url: string, type: Method = 'GET', data = {}): Promise<responseData> {
   return new Promise((resolve, reject) => {
     // 配置axios选项参数
     const option: AxiosRequestConfig = {

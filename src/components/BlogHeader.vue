@@ -5,7 +5,7 @@ import {useStore} from '@/store';
 const store = useStore();
 
 const getUser = computed(() => {
-  return store.getters.user;
+  return store.getters.userData;
 });
 
 const getIsLogin = computed(() => {
