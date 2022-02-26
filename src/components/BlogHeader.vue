@@ -34,11 +34,14 @@ checkLogin();
     </h1>
     <p v-show="!getIsLogin">精品博客汇聚</p>
     <div v-if="getIsLogin" class="user">
-      <i>123</i>
+      <i class="edit-icon">
+        123
+      </i>
       <img class="avatar"
            :src="getUser.avatar"
            :alt="getUser.username"
            :title="getUser.username"/>
+
       <ul>
         <li>
           <router-link to="myBlog">我的主页</router-link>
@@ -120,31 +123,35 @@ checkLogin();
     padding: 0;
   }
 
-  .edit-icon {
-    color: $white;
-    font-size: 30px;
-  }
-
-  .avatar {
-    border: 1px solid $white;
-    border-radius: 50%;
-    height: 40px;
-    margin-left: 15px;
-    width: 40px;
-  }
-
   .user {
+    align-items: center;
+    display: flex;
     position: relative;
+
+    .edit-icon {
+      color: $white;
+      font-size: 18px;
+    }
+
+    .avatar {
+      border: 1px solid $white;
+      border-radius: 50%;
+      height: 40px;
+      margin-left: 15px;
+      width: 40px;
+    }
 
     ul {
       display: none;
       position: absolute;
       right: 0;
       list-style: none;
-      border: 1px solid #eaeaea;
+      border: 1px solid $text-color;
       margin: 0;
       padding: 0;
-      background-color: #fff;
+      background-color: $white;
+      top: 100%;
+      transform: translateX(50%);
 
       a {
         text-decoration: none;
