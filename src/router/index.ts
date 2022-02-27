@@ -22,26 +22,31 @@ const routes: RouteRecordRaw[] = [
     path: '/create',
     name: 'CreateBlog',
     component: () => import('@/pages/blog/create/CreateBlog.vue'),
+    // 只有经过身份验证的用户才能创建帖子
+    meta: { requiresAuth: true },
   },
   {
-    path: '/edit',
+    path: '/edit/:blogId',
     name: 'EditBlog',
     component: () => import('@/pages/blog/edit/EditBlog.vue'),
+    meta: { requiresAuth: true },
   },
   {
-    path: '/detail',
+    path: '/detail/:blogId',
     name: 'BlogDetail',
     component: () => import('@/pages/blog/detail/BlogDetail.vue'),
   },
   {
-    path: '/user',
+    path: '/user/:blogId',
     name: 'User',
     component: () => import('@/pages/user/User.vue'),
+    meta: { requiresAuth: true },
   },
   {
     path: '/myblog',
     name: 'MyBlog',
     component: () => import('@/pages/myblog/MyBlog.vue'),
+    meta: { requiresAuth: true },
   },
   {
     path: '/about',
@@ -53,7 +58,6 @@ const routes: RouteRecordRaw[] = [
       import(/* webpackChunkName: "About" */ '@/pages/About')
   }
 ];
-
 const router = createRouter({
   history: createWebHashHistory(),
   // history: createWebHistory(process.env.BASE_URL),
