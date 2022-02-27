@@ -19,34 +19,34 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/pages/register/Register.vue'),
   },
   {
-    path: '/create',
-    name: 'CreateBlog',
-    component: () => import('@/pages/blog/create/CreateBlog.vue'),
-    // 只有经过身份验证的用户才能创建帖子
-    meta: { requiresAuth: true },
-  },
-  {
-    path: '/edit/:blogId',
-    name: 'EditBlog',
-    component: () => import('@/pages/blog/edit/EditBlog.vue'),
-    meta: { requiresAuth: true },
-  },
-  {
     path: '/detail/:blogId',
     name: 'BlogDetail',
     component: () => import('@/pages/blog/detail/BlogDetail.vue'),
   },
   {
-    path: '/user/:blogId',
+    path: '/create',
+    name: 'CreateBlog',
+    component: () => import('@/pages/blog/create/CreateBlog.vue'),
+    // 只有经过身份验证的用户才能创建帖子
+    meta: {requiresAuth: true},
+  },
+  {
+    path: '/edit/:blogId',
+    name: 'EditBlog',
+    component: () => import('@/pages/blog/edit/EditBlog.vue'),
+    meta: {requiresAuth: true},
+  },
+  {
+    path: '/user/:userId',
     name: 'User',
     component: () => import('@/pages/user/User.vue'),
-    meta: { requiresAuth: true },
+    meta: {requiresAuth: true},
   },
   {
     path: '/myblog',
     name: 'MyBlog',
     component: () => import('@/pages/myblog/MyBlog.vue'),
-    meta: { requiresAuth: true },
+    meta: {requiresAuth: true},
   },
   {
     path: '/about',
