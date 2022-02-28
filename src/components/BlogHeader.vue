@@ -1,6 +1,6 @@
 <script setup lang="ts" name="BlogHeader">
-import {Button,} from 'ant-design-vue';
 import {useStore} from '@/store';
+import {Button,} from 'ant-design-vue';
 
 const store = useStore();
 
@@ -34,9 +34,13 @@ checkLogin();
     </h1>
     <p v-show="!getIsLogin">精品博客汇聚</p>
     <div v-if="getIsLogin" class="user">
-      <i class="edit-icon">
-        123
-      </i>
+      <router-link to="/create">
+        <i class="edit-icon">
+          <SvgIcon name="create"
+                   color="white"
+                   tipText="创建博客"></SvgIcon>
+        </i>
+      </router-link>
       <img class="avatar"
            :src="getUser.avatar"
            :alt="getUser.username"
@@ -71,8 +75,8 @@ checkLogin();
 </template>
 
 <style lang="scss" scoped>
-@import 'src/assets/style/variables';
-@import '../assets/style/blog-article';
+@import "src/assets/style/variables";
+@import "../assets/style/blog-article";
 
 %h1-style {
   color: $white;
@@ -125,12 +129,13 @@ checkLogin();
 
   .user {
     align-items: center;
+    justify-content: center;
     display: flex;
     position: relative;
 
     .edit-icon {
       color: $white;
-      font-size: 18px;
+      font-size: 24px;
     }
 
     .avatar {
@@ -139,6 +144,10 @@ checkLogin();
       height: 40px;
       margin-left: 15px;
       width: 40px;
+
+      &:hover + ul {
+        display: block;
+      }
     }
 
     ul {
@@ -167,9 +176,6 @@ checkLogin();
 
     }
 
-    &:hover ul {
-      display: block;
-    }
   }
 }
 
