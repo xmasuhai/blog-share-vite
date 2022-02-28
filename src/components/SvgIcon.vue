@@ -57,4 +57,5 @@ const symbolId = computed(() => `#${props.prefix}-${props.name}`);
   }
 
 }
+
 </style>
