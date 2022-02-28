@@ -9,6 +9,7 @@ declare module 'vue' {
     BlogHeader: typeof import('./components/BlogHeader.vue')['default']
     HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     Layout: typeof import('./components/Layout.vue')['default']
+    SvgIcon: typeof import('./components/SvgIcon.vue')['default']
     UserInput: typeof import('./components/user-authentication/UserInput.vue')['default']
     UserSubmitBtnTip: typeof import('./components/user-authentication/UserSubmitBtnTip.vue')['default']
   }
