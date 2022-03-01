@@ -46,7 +46,7 @@ checkLogin();
            :alt="getUser.username"
            :title="getUser.username"/>
 
-      <ul>
+      <ul class="menu">
         <li>
           <router-link to="myBlog">我的主页</router-link>
         </li>
@@ -132,6 +132,11 @@ checkLogin();
     justify-content: center;
     display: flex;
     position: relative;
+    height: 100%;
+
+    &:hover > .menu {
+      display: block;
+    }
 
     .edit-icon {
       color: $white;
@@ -143,11 +148,7 @@ checkLogin();
       border-radius: 50%;
       height: 40px;
       margin-left: 15px;
-      width: 40px;
-
-      &:hover + ul {
-        display: block;
-      }
+      aspect-ratio: 1/1;
     }
 
     ul {
