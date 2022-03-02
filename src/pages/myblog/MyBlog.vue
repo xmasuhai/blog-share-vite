@@ -104,9 +104,9 @@ section .item {
     grid-row: 1 / span 3;
     justify-self: center;
     text-align: center;
+    color: $text-lighter-color;
 
     .date-item {
-      color: $text-lighter-color;
       display: block;
     }
 
