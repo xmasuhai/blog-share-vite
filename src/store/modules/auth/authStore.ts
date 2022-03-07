@@ -1,7 +1,7 @@
+import {Module} from 'vuex';
 import auth from '@/api/auth';
 import {responseData, userAuthInfo} from '@/types/responseData';
 import RootStateTypes from '@/store/interface';
-import {Module} from 'vuex';
 import AuthModuleTypes, {ActionContextType} from '@/store/modules/auth/interface';
 
 const state = (): AuthModuleTypes => {

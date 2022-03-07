@@ -18,13 +18,10 @@ const asyncLogin = (logString: logString) => {
 
 const onLogin = (logString: logString) => {
   asyncLogin(logString)
-    .then((/*res*/) => {
-      /* res 不用再处理 已存入 store */
+    .then(() => {
       // 成功，跳转首页
       router.push({path: '/'});
-      // console.log('store.state.authStore.user', store.state.authStore.user);
-      // console.log('store.state.authStore.isLogin', store.state.authStore.isLogin);
-    }, /* 失败，不跳转 */);
+    },);
 };
 
 </script>
