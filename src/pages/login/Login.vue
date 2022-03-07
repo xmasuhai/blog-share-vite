@@ -12,16 +12,26 @@ const router = useRouter();
 const username = ref('');
 const password = ref('');
 
+const defaultUsername = ref('admin001');
+const defaultPassword = ref('123456');
+
+const userLoginInfo = computed(() => {
+  return {
+    username: username.value,
+    password: password.value
+  };
+});
+
+// 从Store注册登录方法
 const asyncLogin = (logString: logString) => {
   return store.dispatch('login', logString);
 };
 
-const onLogin = (logString: logString) => {
-  asyncLogin(logString)
-    .then(() => {
-      // 成功，跳转首页
-      router.push({path: '/'});
-    },);
+// 发起登录请求
+const onLogin = async (logString: logString) => {
+  await asyncLogin(logString);
+  // 成功，跳转首页
+  await router.push({path: '/'});
 };
 
 </script>
@@ -30,13 +40,15 @@ const onLogin = (logString: logString) => {
   <section class="login">
     <UserInput title="用户名"
                errorText="当前用户名已注册"
-               v-model:username="username"/>
+               v-model:username="username"
+               :placeholder="`默认登录名：${defaultUsername}`"/>
 
     <UserInput title="密码"
                inputType="password"
                errorText="当前用户名或密码不匹配"
                v-model:password="password"
-               @keyup.enter="onLogin({username, password})"/>
+               @keyup.enter="onLogin({username, password})"
+               :placeholder="`默认密码：${defaultPassword}`"/>
 
     <UserSubmitBtnTip btnName="立即登录"
                       tipText="没有账号？"

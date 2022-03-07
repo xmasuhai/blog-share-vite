@@ -3,6 +3,10 @@
 import AuthModuleTypes from '@/store/modules/auth/interface';
 import BlogModuleTypes from '@/store/modules/blog/interface';
 
+export interface StoreTypes {
+    routerCompName: string;
+}
+
 export default interface RootStateTypes {
     authStore: AuthModuleTypes;
     blogStore: BlogModuleTypes;
